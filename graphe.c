@@ -72,7 +72,6 @@ Graphe * lire_graphe(char * nomFichier, int sommet_initial){
     FILE * ifs = fopen(nomFichier,"r"); // ouverture du fichier choisi
     int taille, ordre, s1, s2, poids;
 
-
     if (!ifs){
         printf("Erreur de lecture fichier\n");
         exit(-1);
@@ -93,6 +92,7 @@ Graphe * lire_graphe(char * nomFichier, int sommet_initial){
     // assignation des valeurs apres lecture du fichier
     graphe->ordre=ordre;
     graphe->taille=taille;
+    graphe->abre.arc = malloc(graphe->taille*sizeof(pNote_arc));
 
     // lecture des arêtes du graphe ainsi que leurs poids
     for (int i=0; i<taille; ++i){
@@ -103,7 +103,9 @@ Graphe * lire_graphe(char * nomFichier, int sommet_initial){
 
         graphe->pSommet=CreerArete(graphe->pSommet, s1, s2, poids); // graphe non oriente donc relation symetrique entre les sommets
         graphe->pSommet=CreerArete(graphe->pSommet, s2, s1, poids);
-
+        graphe->abre.arc[i].S1 = s1;
+        graphe->abre.arc[i].S2 = s2;
+        graphe->abre.arc[i].poids = poids;
     }
     if(compteur == 0){ // si le compteur est a 0 c'est que le sommet_initial choisi ne correspond a aucun sommets du graphe
         printf("Le sommet choisi n'est pas valable");

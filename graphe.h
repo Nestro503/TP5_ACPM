@@ -22,10 +22,21 @@ struct Arc
 /* Alias de pointeur sur un Arc */
 typedef struct Arc* pArc;
 
+struct note_arc{
+    int S1, S2;
+    int poids;
+    int accepte;
+};
+
+
+
 typedef struct{
     int ordre;
-    pArc* tabArc;
+    struct note_arc* arc;
 }Abre;
+
+typedef struct note_arc* pNote_arc;
+
 
 /* Structure d'un sommet*/
 struct Sommet

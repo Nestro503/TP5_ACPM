@@ -32,5 +32,6 @@ int main() {
     algo_kruskal(*g);
     /// Algo Prim
 
+
     return 0;
 }
