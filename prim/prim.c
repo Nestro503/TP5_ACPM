@@ -2,12 +2,12 @@
 #include "prim.h"
 
 void init_prim(Graphe *graphe, int premier_sommet, int counter){
-    graphe.abre.poids = 0;
-    for (int i = 0; i < graphe.ordre; ++i) {
-        graphe.pSommet[i]->marque = 0; // tous les sommets sont non marqués
-        graphe.pSommet[i]->pred = 0; // les sommets n’ont pas encore de prédécesseur
+    graphe->abre.poids = 0;
+    for (int i = 0; i < graphe->ordre; ++i) {
+        graphe->pSommet[i]->valeur = 0; // tous les sommets sont non marqués
+        graphe->pSommet[i]->pred = 0; // les sommets n’ont pas encore de prédécesseur
     }
-    graphe.pSommet[premier_sommet]->marque = 1;
+    graphe->pSommet[premier_sommet]->valeur = 1;
     counter++;
 }
 
@@ -15,19 +15,18 @@ void init_prim(Graphe *graphe, int premier_sommet, int counter){
 //parmi tous les sommets x marqués, choisir un successeur x’ non marqué tel que
 //p(x,x’) soit minimum
 
-void parcours_prim(Graphe graphe, int s1, int counter){
-    pSommet s2;
-    pSommet tmp = graphe->pSommet[s1]->arc;
-    tmp->arc->poids = INIT_MAX;
+void parcours_prim(Graphe *graphe, int counter){
+    pSommet tmp, s2;
+    tmp->arc->poids = INT_MAX;
 
-    for (int i = 0; i < graphe.ordre; i++){
-        if (graphe.pSommet[i]->marque = 0 && (graphe->pSommet[i]->arc->poids) < (tmp->arc->poids)){
+    for (int i = 0; i < graphe->ordre; i++){
+        if (graphe->pSommet[i]->valeur = 0 && (graphe->pSommet[i]->arc->poids) < (tmp->arc->poids)){
             tmp = graphe->pSommet[i];
         }
     }
-    tmp->arc->poids->pred = s2;
-    graphe.pSommet[s2]->marque = 1;
-    graphe.abre.poids = graphe.abre.poids + tmp->arc->poids;
+    tmp->pred = s2;
+    s2->valeur = 1;
+    graphe->abre.poids = graphe->abre.poids + tmp->arc->poids;
     counter++;
 }
 
@@ -39,12 +38,12 @@ void return_prim(Graphe graphe){
     // ...
 }
 
-void algo_prim(Graphe graphe){
+void algo_prim(Graphe *graphe,int premier_sommet){
     int counter = 0;
-    init_prim(graphe);
-    while (counter != graphe.ordre){
-        parcours_prim();
+    init_prim(graphe,premier_sommet,counter);
+    while (counter != graphe->ordre){
+        parcours_prim(graphe, counter);
     }
-    return_prim();
+    return_prim(*graphe);
 }
 
