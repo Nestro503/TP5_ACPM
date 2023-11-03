@@ -32,6 +32,8 @@ struct note_arc{
 
 typedef struct{
     int ordre;
+    pArc* tabArc;
+    int poids;
     struct note_arc* arc;
 }Abre;
 

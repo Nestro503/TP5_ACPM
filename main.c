@@ -13,7 +13,7 @@ int main() {
     int sommet_initial, sommet_final; // sommet remarquable de notre parcours pour lesquels on va evaluer la distance
 
     ///validation du fichier utilisé
-    printf("Entrer le nom du fichier du labyrinthe:");
+    printf("Entrer le nom du fichier:");
     scanf("%s",nom_fichier); // atribution du nom du fichier
 
     ///saisie du numéro des sommets remarquables
@@ -30,7 +30,9 @@ int main() {
 
     /// Algo Kruskal
     algo_kruskal(*g);
+
     /// Algo Prim
+    //algo_prim(*g);
 
 
     return 0;
