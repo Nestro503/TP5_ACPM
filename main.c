@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "Kruskal/kruskal.h"
+#include "prim/prim.h"
 #include "graphe.h"
 
 
@@ -29,10 +30,12 @@ int main() {
     graphe_afficher(g);
 
     /// Algo Kruskal
+    printf("\nALGORITHME DE KRUSKAL\n");
     algo_kruskal(*g);
 
     /// Algo Prim
-    //algo_prim(*g);
+    printf("\n\nALGORITHME DE PRIM\n");
+    algo_prim(*g, sommet_initial);
 
 
     return 0;

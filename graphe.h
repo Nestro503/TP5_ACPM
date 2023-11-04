@@ -45,6 +45,7 @@ struct Sommet
 {
     struct Arc* arc;
     int valeur;
+    int marque;
     int distance;
     int pred;
 };

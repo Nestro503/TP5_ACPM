@@ -5,13 +5,15 @@
 #include "../graphe.h"
 
 
-void init_prim(Graphe *graphe, int premier_sommet, int counter);
+void init_prim(Graphe graphe, int premier_sommet, int tab[]);
 
-void parcours_prim(Graphe *graphe, int counter);
+void parcours_prim(Graphe* graphe, int tab[]);
 
 void return_prim(Graphe graphe);
 
-void algo_prim(Graphe *graphe,int premier_sommet)
+int tous_sommet_marque(int const tab[], int ordre);
+
+void algo_prim(Graphe graphe, int premier_sommet);
 
 
 #endif //TP5_ACPM_PRIM_H
