@@ -51,7 +51,7 @@ int tous_sommet_marque(int const tab[], int ordre){
         return 1;
 }
 
-void return_prim(Graphe graphe){// le resultat de l'algo de prim
+void return_prim(Graphe graphe, int sommet_initial){// le resultat de l'algo de prim
     int temp = 0;
     int compteur = 0;
     for (int i = 0; i < graphe.ordre; ++i) {
@@ -62,7 +62,8 @@ void return_prim(Graphe graphe){// le resultat de l'algo de prim
     // print la liste des arretes qui ont etaient selectionnes
     printf("Voici la liste des aretes contenues dans l'ACPM :\n");
     while(compteur != graphe.ordre){
-        printf("%d --> %d / ", graphe.pSommet[compteur]->pred, compteur);
+        if(compteur != sommet_initial)
+            printf("%d --> %d / ", graphe.pSommet[compteur]->pred, compteur);
         compteur++;
     }
 }
@@ -73,6 +74,6 @@ void algo_prim(Graphe graphe,int premier_sommet){
     do{
         parcours_prim(&graphe, tab);
     }while(!tous_sommet_marque(tab,graphe.ordre));
-    return_prim(graphe);
+    return_prim(graphe, premier_sommet);
 }
 

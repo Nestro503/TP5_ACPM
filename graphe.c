@@ -27,7 +27,7 @@ Graphe* CreerGraphe(int ordre){
     return Newgraphe;
 }
 
-pSommet* CreerArete(pSommet* sommet,int s1,int s2,  int poids){
+pSommet* CreerArete(pSommet* sommet,int s1,int s2, int poids){
 
     if(sommet[s1]->arc==NULL){
         pArc Newarc=(pArc)malloc(sizeof(struct Arc));

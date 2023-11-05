@@ -39,7 +39,7 @@ void algo_kruskal(Graphe graphe){
     }
     for (int i = 0; i < graphe.taille; ++i) {
         if(graphe.abre.arc[i].accepte){ // prends tous les arcs marqués
-            printf("%d --> %d / ", graphe.abre.arc[i].S1, graphe.abre.arc[i].S2); // affiche les arètes présentes dans l'arbre
+            printf("%d <--> %d / ", graphe.abre.arc[i].S1, graphe.abre.arc[i].S2); // affiche les arètes présentes dans l'arbre
             graphe.abre.poids = graphe.abre.poids + graphe.abre.arc[i].poids; // calcul le poids de l'arbre
         }
     }

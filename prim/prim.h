@@ -9,7 +9,7 @@ void init_prim(Graphe graphe, int premier_sommet, int tab[]);
 
 void parcours_prim(Graphe* graphe, int tab[]);
 
-void return_prim(Graphe graphe);
+void return_prim(Graphe graphe, int sommet_initial);
 
 int tous_sommet_marque(int const tab[], int ordre);
 
