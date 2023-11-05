@@ -4,14 +4,15 @@
 #include "prim/prim.h"
 #include "graphe.h"
 
-
-
+////////////////////////////////
+/// Si bug lire le readme.md ///
+////////////////////////////////
 int main() {
 
     ///initialisation des variables
     Graphe * g;
     char nom_fichier[50]; // le nom du fichier pourra faire au maximum 50 caracteres
-    int sommet_initial, sommet_final; // sommet remarquable de notre parcours pour lesquels on va evaluer la distance
+    int sommet_initial; // sommet remarquable de notre parcours pour lesquels on va evaluer la distance
 
     ///validation du fichier utilisé
     printf("Entrer le nom du fichier:");
@@ -36,7 +37,6 @@ int main() {
     /// Algo Prim
     printf("\n\nALGORITHME DE PRIM\n");
     algo_prim(*g, sommet_initial);
-
 
     return 0;
 }

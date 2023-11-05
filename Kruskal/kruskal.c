@@ -12,10 +12,10 @@ void algo_kruskal(Graphe graphe){
     int nb_arete = 0;
     int s1, s2;
     numCC = malloc(graphe.ordre* sizeof(int));
-    for (int i = 0; i < graphe.ordre; ++i) {
+    for (int i = 0; i < graphe.ordre; ++i) { // assigne un nombre à tous les sommets pour vérifier leur connexité
         numCC[i] = i;
     }
-    for (int i = 0; i < graphe.taille; ++i) {
+    for (int i = 0; i < graphe.taille; ++i) { // mets la marque de tous les arcs à 0
         graphe.abre.arc[nb_arete].accepte = 0;
     }
     graphe.abre.poids = 0;
@@ -25,24 +25,23 @@ void algo_kruskal(Graphe graphe){
         s1 = graphe.abre.arc[nb_arete].S1;
         s2 = graphe.abre.arc[nb_arete].S2;
         if(numCC[s1] != numCC[s2]){
-            graphe.abre.arc[nb_arete].accepte = 1;
+            graphe.abre.arc[nb_arete].accepte = 1; // marque le sommet
             for (int i = 0; i < graphe.ordre; ++i) {
-                if(i != s2){
-                    if(numCC[i] == numCC[s2]){
+                if(i != s2){ // si cette condition n'existe pas cela modifie la connexité s2 et cela
+                    if(numCC[i] == numCC[s2]){ //ne modifie pas les valeurs apres s2
                         numCC[i] = numCC[s1];
                     }
                 }
             }
-            numCC[s2] = numCC[s1];
+            numCC[s2] = numCC[s1]; // modifie la connexité de s2
         }
         nb_arete++;
     }
     for (int i = 0; i < graphe.taille; ++i) {
-        if(graphe.abre.arc[i].accepte){
+        if(graphe.abre.arc[i].accepte){ // prends tous les arcs marqués
             printf("%d --> %d / ", graphe.abre.arc[i].S1, graphe.abre.arc[i].S2); // affiche les arètes présentes dans l'arbre
             graphe.abre.poids = graphe.abre.poids + graphe.abre.arc[i].poids; // calcul le poids de l'arbre
         }
-
     }
-    printf("\nle poids minimal de l'arbre est %d", graphe.abre.poids);
+    printf("\nle poids minimal de l'arbre est %d", graphe.abre.poids); // affiche le
 }

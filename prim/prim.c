@@ -14,8 +14,8 @@ void init_prim(Graphe graphe, int premier_sommet, int tab[]){
 //parmi tous les sommets x marqués, choisir un successeur x’ non marqué tel que
 //p(x,x’) soit minimum
 
-void parcours_prim(Graphe* graphe, int tab[]){
-    pArc arc_temp = malloc(sizeof(pArc));
+void parcours_prim(Graphe* graphe, int tab[]){// parcours les arcs de tous les sommets marqués
+    pArc arc_temp = malloc(sizeof(pArc)); // et détecte l'arc avec le plus petit poids
     arc_temp->poids = INT_MAX;
     int pred_temp;
 
@@ -24,7 +24,7 @@ void parcours_prim(Graphe* graphe, int tab[]){
             pArc arc = graphe->pSommet[i]->arc;
             while ((arc != NULL)){
                 if(tab[arc->sommet] == 0){ // si le sucesseur du sommet i n'est pas marque
-                    if(arc->poids < arc_temp->poids){ //
+                    if(arc->poids < arc_temp->poids){ // permet de trouver l'arc avec le plus petit poids de tous les sommets marqués
                         arc_temp = arc;
                         pred_temp = i;
                     }
@@ -32,11 +32,10 @@ void parcours_prim(Graphe* graphe, int tab[]){
                 arc = arc->arc_suivant;
             }
         }
-
     }
     graphe->abre.poids = graphe->abre.poids + arc_temp->poids;
     graphe->pSommet[arc_temp->sommet]->pred = pred_temp;
-    tab[arc_temp->sommet] = 1;
+    tab[arc_temp->sommet] = 1; // marque le sommet avec l'arc le plus petit poids
 }
 
 int tous_sommet_marque(int const tab[], int ordre){
@@ -52,7 +51,7 @@ int tous_sommet_marque(int const tab[], int ordre){
         return 1;
 }
 
-void return_prim(Graphe graphe){
+void return_prim(Graphe graphe){// le resultat de l'algo de prim
     int temp = 0;
     int compteur = 0;
     for (int i = 0; i < graphe.ordre; ++i) {
